@@ -1,0 +1,22 @@
+#	$NetBSD: Makefile,v 1.3 2015/10/19 16:16:33 pooka Exp $
+#
+
+##Put accf_dataready.c sourcedir in here so I don't have a copied over accf_data.c file
+
+.PATH:  ${.CURDIR}/../../../../netinet
+
+RUMPROOT= ../../../../../../..
+SYSROOT  = ../../../..
+
+CPPFLAGS += -I$(SYSROOT)/netinet
+
+LIB=	rumpdev_accf_dataready
+COMMENT=accf_dataready module
+
+IOCONF= ACCF_DATAREADY.ioconf
+
+SRCS= accf_data.c accf_dataready_component.c
+   
+#.include "${RUMPTOP}/Makefile.rump"
+.include <bsd.lib.mk>
+.include <bsd.klinks.mk>
